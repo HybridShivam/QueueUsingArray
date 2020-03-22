@@ -1,94 +1,125 @@
-// Java program for array implementation of queue 
+public class QueueUsingArrayO1 {
+    int[] data;
+    int rear;
+    int front;
+    int noOfElements;
 
-// A class to represent a queue 
-class Queue
-{
-    int front, rear, size;
-    int  capacity;
-    int array[];
-
-    public Queue(int capacity) {
-        this.capacity = capacity;
-        front = this.size = 0;
-        rear = capacity - 1;
-        array = new int[this.capacity];
-
+    public QueueUsingArrayO1(int size){
+        data=new int[size];
+        rear=0;
+        front=0;
+        noOfElements=0;
     }
 
-    // Queue is full when size becomes equal to  
-    // the capacity  
-    boolean isFull(Queue queue)
-    {  return (queue.size == queue.capacity);
+    public void enqueue(int element){
+        if(isFull()){
+            System.out.println("Queue Full !!!");
+        }
+        else {
+            rear=rear%data.length;
+            data[rear] = element;
+            rear++;
+            noOfElements++;
+        }
     }
 
-    // Queue is empty when size is 0 
-    boolean isEmpty(Queue queue)
-    {  return (queue.size == 0); }
-
-    // Method to add an item to the queue.  
-    // It changes rear and size 
-    void enqueue( int item)
-    {
-        if (isFull(this))
-            return;
-        this.rear = (this.rear + 1)%this.capacity;
-        this.array[this.rear] = item;
-        this.size = this.size + 1;
-        System.out.println(item+ " enqueued to queue");
+    private boolean isFull() {
+        if(noOfElements==data.length){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
-    // Method to remove an item from queue.   
-    // It changes front and size 
-    int dequeue()
-    {
-        if (isEmpty(this))
-            return Integer.MIN_VALUE;
-
-        int item = this.array[this.front];
-        this.front = (this.front + 1)%this.capacity;
-        this.size = this.size - 1;
-        return item;
+    public int dequeue(){
+        int res=0;
+        if(isEmpty()){
+            System.out.print("Delete : Queue Empty !!! ");
+        }
+        else{
+            front=front%data.length;
+            res=data[front];
+//            for (int i = 0; i < rear-1; i++) {
+//                data[i]=data[i+1];
+//            }
+            front++;
+            //rear--;
+            noOfElements--;
+        }
+        return res;
     }
 
-    // Method to get front of queue 
-    int front()
-    {
-        if (isEmpty(this))
-            return Integer.MIN_VALUE;
-
-        return this.array[this.front];
+    private boolean isEmpty() {
+        if(noOfElements==0){
+            return true;
+        }
+        else
+            return false;
     }
 
-    // Method to get rear of queue 
-    int rear()
-    {
-        if (isEmpty(this))
-            return Integer.MIN_VALUE;
-
-        return this.array[this.rear];
+    public int front(){
+        if(isEmpty()){
+            System.out.print("Queue Empty !!! ");
+            return 0;
+        }
+        return data[front];
     }
-}
+    public int rear(){
+        if(isEmpty()){
+            System.out.print("Queue Empty !!! ");
+            return 0;
+        }
+        return data[rear-1];
+    }
+
+    public void Display(){
+        if(isEmpty()){
+            System.out.println("Display : Queue Empty !!!");
+        }
+        else {
+            //front=front%data.length;
+            //rear=rear%data.length;
+            for (int i = front; i < rear; i++) {
+                System.out.print(data[i]);
+                if (i != rear - 1) {
+                    System.out.print("<---");
+                }
+            }
+            System.out.println();
+        }
+    }
+//    public boolean traverse(){
+//
+//    }
 
 
-// Driver class 
-public class QueueUsingArrayO1
-{
-    public static void main(String[] args)
-    {
-        Queue queue = new Queue(1000);
-
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
-        queue.enqueue(40);
-
-        System.out.println(queue.dequeue() +
-                " dequeued from queue\n");
-
-        System.out.println("Front item is " +
-                queue.front());
-
-        System.out.println("Rear item is " +
-                queue.rear());
+    public static void main(String[] args) {
+        int queueSize=4;
+        System.out.println("QueueSize "+queueSize);
+        QueueUsingArrayO1 queue=new QueueUsingArrayO1(queueSize);
+        queue.Display();
+        System.out.println("Adding 5 Elements");
+        queue.enqueue(1);queue.Display();
+        queue.enqueue(2);queue.Display();
+        queue.enqueue(3);queue.Display();
+        queue.enqueue(4);queue.Display();
+        queue.enqueue(5);queue.Display();
+        System.out.println("Front Element "+queue.front());
+        System.out.println("Rear Element "+queue.rear());
+        System.out.println("Deleted "+queue.dequeue());
+        System.out.println("Deleted "+queue.dequeue());
+//        System.out.println("Deleted "+queue.dequeue());
+//        System.out.println("Deleted "+queue.dequeue());
+//        System.out.println("Deleted "+queue.dequeue());
+//        System.out.println("Deleted "+queue.dequeue());
+        System.out.println("Front Element "+queue.front());
+        System.out.println("Rear Element "+queue.rear());
+        queue.Display();
+        System.out.println("Deleted "+queue.dequeue());
+        System.out.println("Deleted "+queue.dequeue());
+        System.out.println("Deleted "+queue.dequeue());
+        System.out.println("Deleted "+queue.dequeue());
+        queue.Display();
     }
 }
