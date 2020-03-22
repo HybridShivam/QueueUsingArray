@@ -63,6 +63,14 @@ public class QueueUsingArray {
         return data[front];
     }
 
+    public int rear(){
+        if(isEmpty()){
+            System.out.print("Queue Empty !!! ");
+            return 0;
+        }
+        return data[rear-1];
+    }
+
     public void Display(){
         if(isEmpty()){
             System.out.println("Display : Queue Empty !!!");
@@ -83,7 +91,7 @@ public class QueueUsingArray {
 
 
     public static void main(String[] args) {
-        int queueSize=10;
+        int queueSize=4;
         System.out.println("QueueSize "+queueSize);
         QueueUsingArray queue=new QueueUsingArray(queueSize);
         queue.Display();
@@ -93,6 +101,8 @@ public class QueueUsingArray {
         queue.enqueue(3);queue.Display();
         queue.enqueue(4);queue.Display();
         queue.enqueue(5);queue.Display();
+        System.out.println("Front Element "+queue.front());
+        System.out.println("Rear Element "+queue.rear());
         System.out.println("Deleted "+queue.dequeue());
         System.out.println("Deleted "+queue.dequeue());
 //        System.out.println("Deleted "+queue.dequeue());
@@ -100,6 +110,7 @@ public class QueueUsingArray {
 //        System.out.println("Deleted "+queue.dequeue());
 //        System.out.println("Deleted "+queue.dequeue());
         System.out.println("Front Element "+queue.front());
+        System.out.println("Rear Element "+queue.rear());
         queue.Display();
         System.out.println("Deleted "+queue.dequeue());
         System.out.println("Deleted "+queue.dequeue());
