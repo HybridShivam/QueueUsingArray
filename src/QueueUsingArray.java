@@ -34,7 +34,7 @@ public class QueueUsingArray {
     public int dequeue(){
         int res=0;
         if(isEmpty()){
-            System.out.print("Queue Empty !!! ");
+            System.out.print("Delete : Queue Empty !!! ");
         }
         else{
             res=data[front];
@@ -71,9 +71,10 @@ public class QueueUsingArray {
             for (int i = front; i < rear; i++) {
                 System.out.print(data[i]);
                 if (i != rear - 1) {
-                    System.out.print("--->");
+                    System.out.print("<---");
                 }
             }
+            System.out.println();
         }
     }
 //    public boolean traverse(){
@@ -85,12 +86,13 @@ public class QueueUsingArray {
         int queueSize=10;
         System.out.println("QueueSize "+queueSize);
         QueueUsingArray queue=new QueueUsingArray(queueSize);
+        queue.Display();
         System.out.println("Adding 5 Elements");
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.enqueue(3);
-        queue.enqueue(4);
-        queue.enqueue(5);
+        queue.enqueue(1);queue.Display();
+        queue.enqueue(2);queue.Display();
+        queue.enqueue(3);queue.Display();
+        queue.enqueue(4);queue.Display();
+        queue.enqueue(5);queue.Display();
         System.out.println("Deleted "+queue.dequeue());
         System.out.println("Deleted "+queue.dequeue());
 //        System.out.println("Deleted "+queue.dequeue());
@@ -98,6 +100,11 @@ public class QueueUsingArray {
 //        System.out.println("Deleted "+queue.dequeue());
 //        System.out.println("Deleted "+queue.dequeue());
         System.out.println("Front Element "+queue.front());
+        queue.Display();
+        System.out.println("Deleted "+queue.dequeue());
+        System.out.println("Deleted "+queue.dequeue());
+        System.out.println("Deleted "+queue.dequeue());
+        System.out.println("Deleted "+queue.dequeue());
         queue.Display();
     }
 }
