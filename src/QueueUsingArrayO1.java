@@ -63,7 +63,7 @@ public class QueueUsingArrayO1 {
             System.out.print("Queue Empty !!! ");
             return 0;
         }
-        return data[front];
+        return data[front%data.length];
     }
     public int rear(){
         if(isEmpty()){
@@ -80,10 +80,24 @@ public class QueueUsingArrayO1 {
         else {
             //front=front%data.length;
             //rear=rear%data.length;
-            for (int i = front; i < rear; i++) {
-                System.out.print(data[i]);
-                if (i != rear - 1) {
+            if(rear>front) {
+                for (int i = front; i < rear; i++) {
+                    System.out.print(data[i]);
+                    if (i != rear - 1) {
+                        System.out.print("<---");
+                    }
+                }
+            }
+            else{
+                for (int i = front; i < data.length; i++) {
+                    System.out.print(data[i]);
                     System.out.print("<---");
+                }
+                for (int i = 0; i < rear; i++) {
+                    System.out.print(data[i]);
+                    if (i != rear - 1) {
+                        System.out.print("<---");
+                    }
                 }
             }
             System.out.println();
@@ -121,5 +135,19 @@ public class QueueUsingArrayO1 {
         System.out.println("Deleted "+queue.dequeue());
         System.out.println("Deleted "+queue.dequeue());
         queue.Display();
+        queue.enqueue(10);queue.Display();
+        queue.enqueue(20);queue.Display();
+        queue.enqueue(30);queue.Display();
+        queue.enqueue(40);queue.Display();
+        System.out.println("Front Element "+queue.front());
+        System.out.println("Rear Element "+queue.rear());
+        queue.enqueue(50);
+        queue.dequeue();
+        queue.dequeue();
+        queue.enqueue(60);
+        queue.enqueue(70);
+        queue.Display();
+        System.out.println("Front: "+queue.front());
+        System.out.println("Rear: "+queue.rear());
     }
 }

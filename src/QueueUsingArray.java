@@ -117,5 +117,19 @@ public class QueueUsingArray {
         System.out.println("Deleted "+queue.dequeue());
         System.out.println("Deleted "+queue.dequeue());
         queue.Display();
+        queue.enqueue(10);queue.Display();
+        queue.enqueue(20);queue.Display();
+        queue.enqueue(30);queue.Display();
+        queue.enqueue(40);queue.Display();
+        System.out.println("Front Element "+queue.front());
+        System.out.println("Rear Element "+queue.rear());
+        queue.enqueue(50);
+        queue.dequeue();
+        queue.dequeue();
+        queue.enqueue(60);
+        queue.enqueue(70);
+        queue.Display();
+        System.out.println("Front: "+queue.front());
+        System.out.println("Rear: "+queue.rear());
     }
 }
