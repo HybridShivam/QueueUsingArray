@@ -40,11 +40,7 @@ public class QueueUsingArrayO1 {
         else{
             front=front%data.length;
             res=data[front];
-//            for (int i = 0; i < rear-1; i++) {
-//                data[i]=data[i+1];
-//            }
             front++;
-            //rear--;
             noOfElements--;
         }
         return res;
